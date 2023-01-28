@@ -353,7 +353,9 @@ products = [
     },
     {
         "_id": 21,
-        "description": "Orange popsicle ice cream bars made from fresh oranges.  a refreshing summer treat.",
+        "description": """""Orange popsicle ice cream bars 
+                        made from fresh oranges.
+                        a refreshing summer treat.""",
         "price": 21.48,
         "rating": 4,
         "title": "Oranges",
