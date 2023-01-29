@@ -14,12 +14,14 @@ def get_product_by_id(id: int):
 
 def get_products_by_type(types: str):
     result = []
+
     if not type(types) is str:
         raise TypeError('product type must be a str')
+       
     for item in products:
         if item["type"] == types:
             result.append(item)
-    return result if result else []
+    return result
 
 
 def add_product(menu, **product):
@@ -45,3 +47,18 @@ def menu_report():
         most_common_type[(item)] = types.count(item)
     most_common_type = max(most_common_type, key=most_common_type.get)
     return f"Products Count: {amount_products} - Average Price: ${price_average} - Most Common Type: {most_common_type}"
+
+
+def add_product_extra(menu: list, *args, **kwargs):
+    
+    for required_key in args:
+        if required_key not in kwargs:
+            raise KeyError(f"field {required_key} is required")
+    new_user = kwargs.copy()
+    for request_key in kwargs.keys():
+        if request_key not in args:
+            del new_user[request_key]
+ 
+    res = add_product(menu, **new_user)
+    menu.append(res)
+    return res
